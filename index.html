@@ -56,14 +56,14 @@
     .wrapper {
       position: relative;
       z-index: 1;
-      max-width: 720px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 80px 24px 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 72px;
+      gap: 56px;
     }
 
     /* --- Brand --- */
@@ -83,62 +83,74 @@
       font-weight: 400;
     }
 
-    /* --- App card --- */
-    .app-card {
+    /* --- App grid (two cards side by side) --- */
+    .app-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
       width: 100%;
-      border: 1px solid rgba(51, 242, 255, 0.15);
+    }
+
+    /* --- Shared card base --- */
+    .app-card {
       border-radius: 20px;
-      padding: 48px 32px;
-      background: rgba(51, 242, 255, 0.03);
+      padding: 40px 28px;
       backdrop-filter: blur(12px);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
+      min-height: 420px;
+      justify-content: center;
+    }
+
+    /* Slide Rush card */
+    .app-card--live {
+      border: 1px solid rgba(51, 242, 255, 0.15);
+      background: rgba(51, 242, 255, 0.03);
     }
     .app-icon {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
       border-radius: 26px;
       object-fit: cover;
       box-shadow: 0 0 40px rgba(51, 242, 255, 0.25);
     }
     .app-card h2 {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
       font-weight: 900;
       letter-spacing: 0.04em;
       color: var(--cyan);
     }
     .app-card .tagline {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       font-weight: 600;
     }
     .app-card .description {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       line-height: 1.6;
-      color: rgba(255,255,255,0.7);
-      max-width: 440px;
+      color: rgba(255,255,255,0.65);
     }
     .store-badges {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 8px;
+      margin-top: 4px;
     }
     .store-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 12px;
+      gap: 6px;
+      padding: 10px 18px;
+      border-radius: 10px;
       border: 1px solid rgba(255,255,255,0.15);
       background: rgba(255,255,255,0.05);
       color: var(--text);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       transition: all 0.25s ease;
     }
     .store-badge:hover {
@@ -146,27 +158,41 @@
       border-color: rgba(255,255,255,0.3);
       transform: translateY(-2px);
     }
-    .store-badge svg { width: 20px; height: 20px; fill: currentColor; }
+    .store-badge svg { width: 18px; height: 18px; fill: currentColor; }
 
-    /* --- Coming soon --- */
-    .coming-soon {
-      width: 100%;
-      padding: 48px 32px;
+    /* --- Coming soon card --- */
+    .app-card--locked {
       border: 1px solid rgba(210, 64, 255, 0.15);
-      border-radius: 20px;
       background: rgba(210, 64, 255, 0.03);
     }
-    .coming-soon h2 {
-      font-size: clamp(1.5rem, 4vw, 2.25rem);
-      font-weight: 900;
-      letter-spacing: 0.03em;
+    .lock-icon {
+      width: 110px;
+      height: 110px;
+      border-radius: 26px;
+      background: rgba(210, 64, 255, 0.08);
+      border: 2px solid rgba(210, 64, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(210, 64, 255, 0.15);
+    }
+    .lock-icon svg {
+      width: 44px;
+      height: 44px;
+      fill: none;
+      stroke: var(--purple);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.6;
+    }
+    .app-card--locked h2 {
       color: var(--purple);
       text-shadow: 0 0 30px rgba(210, 64, 255, 0.4);
     }
-    .coming-soon p {
-      margin-top: 16px;
-      font-size: 1rem;
-      color: var(--text-muted);
+    .app-card--locked .tagline {
+      color: rgba(210, 64, 255, 0.6);
+      font-weight: 700;
     }
     .pulse-dot {
       display: inline-block;
@@ -198,10 +224,12 @@
     footer a:hover { color: var(--cyan); }
     .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 12px; }
 
-    @media (max-width: 480px) {
-      .wrapper { padding: 60px 16px 40px; gap: 56px; }
-      .app-card { padding: 32px 20px; }
-      .app-icon { width: 96px; height: 96px; border-radius: 22px; }
+    @media (max-width: 640px) {
+      .app-grid { grid-template-columns: 1fr; }
+      .wrapper { padding: 60px 16px 40px; gap: 40px; }
+      .app-card { padding: 32px 20px; min-height: auto; }
+      .app-icon, .lock-icon { width: 96px; height: 96px; border-radius: 22px; }
+      .lock-icon svg { width: 36px; height: 36px; }
     }
   </style>
 </head>
@@ -215,35 +243,46 @@
     <!-- Brand -->
     <header class="brand">
       <h1>MAX EFFORT APPS</h1>
-      <p>Games that hit different.</p>
+      <p>Apps that hit different.</p>
     </header>
 
-    <!-- Slide Rush -->
-    <section class="app-card">
-      <img src="images/slide-rush-icon.png" alt="Slide Rush icon" class="app-icon">
-      <h2>SLIDE RUSH</h2>
-      <p class="tagline">Line it up. Let go. Don't miss.</p>
-      <p class="description">
-        A fast-paced rhythm matching game with neon visuals, daily challenges,
-        streak rewards, and 1v1 multiplayer. How long can you keep up?
-      </p>
-      <div class="store-badges">
-        <a href="https://apps.apple.com" class="store-badge" aria-label="Download on the App Store">
-          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          App Store
-        </a>
-        <a href="https://play.google.com" class="store-badge" aria-label="Get it on Google Play">
-          <svg viewBox="0 0 24 24"><path d="M3.61 1.814L13.793 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .61-.92zm10.893 9.476l2.56-2.56 3.48 2.02c.63.36.63.96 0 1.32l-3.48 2.02-2.56-2.56-.01-.12.01-.12zM5.27.405L14.5 5.75l-2.56 2.56L5.27.405zm0 23.19l6.67-7.905 2.56 2.56L5.27 23.595z"/></svg>
-          Google Play
-        </a>
-      </div>
-    </section>
+    <!-- App Grid -->
+    <div class="app-grid">
 
-    <!-- Coming Soon -->
-    <section class="coming-soon">
-      <h2>SOMETHING BIG IS COMING</h2>
-      <p><span class="pulse-dot"></span>Stay tuned. A new game is in the works.</p>
-    </section>
+      <!-- Slide Rush -->
+      <section class="app-card app-card--live">
+        <img src="images/slide-rush-icon.png" alt="Slide Rush icon" class="app-icon">
+        <h2>SLIDE RUSH</h2>
+        <p class="tagline">Line it up. Let go. Don't miss.</p>
+        <p class="description">
+          A fast-paced rhythm matching game with neon visuals, daily challenges,
+          streak rewards, and 1v1 multiplayer.
+        </p>
+        <div class="store-badges">
+          <a href="https://apps.apple.com" class="store-badge" aria-label="Download on the App Store">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.sliderush.slide_rush_flutter&hl=en_US" class="store-badge" aria-label="Get it on Google Play">
+            <svg viewBox="0 0 24 24"><path d="M3.61 1.814L13.793 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .61-.92zm10.893 9.476l2.56-2.56 3.48 2.02c.63.36.63.96 0 1.32l-3.48 2.02-2.56-2.56-.01-.12.01-.12zM5.27.405L14.5 5.75l-2.56 2.56L5.27.405zm0 23.19l6.67-7.905 2.56 2.56L5.27 23.595z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </section>
+
+      <!-- Coming Soon -->
+      <section class="app-card app-card--locked">
+        <div class="lock-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h2>SOMETHING BIG</h2>
+        <p class="tagline">COMING SOON</p>
+        <p class="description">
+          <span class="pulse-dot"></span>A new app is in the works. Stay tuned.
+        </p>
+      </section>
+
+    </div>
 
   </div>
 
