@@ -185,39 +185,36 @@
     }
     .car-silhouette {
       position: absolute;
-      width: 140px;
+      width: 150px;
       height: auto;
-      bottom: 18px;
+      bottom: 20px;
       z-index: 0;
-      opacity: 0.18;
-      filter: drop-shadow(0 0 18px rgba(210, 64, 255, 0.6));
-    }
-    .car-silhouette path {
-      fill: var(--purple);
+      opacity: 0.25;
+      filter: drop-shadow(0 0 12px rgba(210, 64, 255, 0.5));
     }
     .lock-label {
       position: absolute;
-      bottom: 12px;
-      font-size: 32px;
+      bottom: 10px;
+      font-size: 28px;
       font-weight: 800;
       color: var(--purple);
-      opacity: 0.45;
+      opacity: 0.5;
       letter-spacing: 3px;
       z-index: 1;
-      text-shadow: 0 0 20px rgba(210, 64, 255, 0.5);
+      text-shadow: 0 0 16px rgba(210, 64, 255, 0.5);
     }
     .lock-icon .lock-svg {
       position: relative;
       z-index: 2;
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
       fill: none;
       stroke: var(--purple);
       stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
       opacity: 0.7;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     .app-card--locked h2 {
       color: var(--purple);
@@ -264,8 +261,8 @@
       .app-icon { width: 96px; height: 96px; border-radius: 22px; }
       .lock-icon { width: 140px; height: 130px; border-radius: 26px; }
       .lock-icon .lock-svg { width: 40px; height: 40px; }
-      .car-silhouette { width: 105px; }
-      .lock-label { font-size: 24px; }
+      .car-silhouette { width: 110px; }
+      .lock-label { font-size: 20px; }
     }
   </style>
 </head>
@@ -299,14 +296,14 @@
             <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             App Store
           </a>
-          <span class="store-badge store-badge--disabled">Unavailable on Android</span>
+          <span class="store-badge store-badge--disabled">Temporarily unavailable on Android</span>
         </div>
       </section>
 
       <!-- Coming Soon -->
       <section class="app-card app-card--locked">
         <div class="lock-icon">
-          <svg class="car-silhouette" viewBox="0 0 512 220"><path d="M 48,180 C 30,180 16,168 16,152 L 16,132 C 16,120 24,110 36,106 L 80,92 L 140,52 C 156,40 176,34 196,34 L 340,34 C 364,34 386,44 402,62 L 448,112 L 476,118 C 496,122 512,140 512,160 L 512,164 C 512,176 502,186 490,186 L 440,186 C 436,206 418,220 396,220 C 374,220 356,206 352,186 L 168,186 C 164,206 146,220 124,220 C 102,220 84,206 80,186 L 48,180 Z M 124,196 C 134,196 142,188 142,178 C 142,168 134,160 124,160 C 114,160 106,168 106,178 C 106,188 114,196 124,196 Z M 396,196 C 406,196 414,188 414,178 C 414,168 406,160 396,160 C 386,160 378,168 378,178 C 378,188 386,196 396,196 Z"/></svg>
+          <svg class="car-silhouette" viewBox="0 0 120 42" fill="none" stroke="var(--purple)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6,30 C4,30 3,29 3,27 L3,24 C3,22 4,20 6,19 L14,16 C18,12 24,7 34,5 C38,4 42,4 48,4 L62,4 C66,4 70,5 72,8 L82,18 L96,19 C102,19 106,21 108,24 L112,27 C114,30 113,32 110,32 L98,32 C96,26 92,22 86,22 C80,22 76,26 74,32 L44,32 C42,26 38,22 32,22 C26,22 22,26 20,32 L8,32 C6,32 5,31 6,30 Z"/><circle cx="32" cy="32" r="7"/><circle cx="32" cy="32" r="3.5"/><circle cx="86" cy="32" r="7"/><circle cx="86" cy="32" r="3.5"/><line x1="16" y1="16" x2="40" y2="16" opacity="0.4"/><path d="M42,5 L42,16" opacity="0.4"/><path d="M72,8 L82,18" opacity="0.3"/></svg>
           <svg class="lock-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <span class="lock-label">Ai</span>
         </div>
