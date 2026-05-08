@@ -159,6 +159,11 @@
       transform: translateY(-2px);
     }
     .store-badge svg { width: 18px; height: 18px; fill: currentColor; }
+    .store-badge--disabled {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+    }
 
     /* --- Coming soon card --- */
     .app-card--locked {
@@ -167,8 +172,8 @@
     }
     .lock-icon {
       position: relative;
-      width: 160px;
-      height: 160px;
+      width: 180px;
+      height: 170px;
       border-radius: 34px;
       background: rgba(210, 64, 255, 0.08);
       border: 2px solid rgba(210, 64, 255, 0.2);
@@ -176,28 +181,43 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 0 40px rgba(210, 64, 255, 0.15);
+      overflow: hidden;
+    }
+    .car-silhouette {
+      position: absolute;
+      width: 140px;
+      height: auto;
+      bottom: 18px;
+      z-index: 0;
+      opacity: 0.18;
+      filter: drop-shadow(0 0 18px rgba(210, 64, 255, 0.6));
+    }
+    .car-silhouette path {
+      fill: var(--purple);
     }
     .lock-label {
       position: absolute;
-      font-size: 56px;
+      bottom: 12px;
+      font-size: 32px;
       font-weight: 800;
       color: var(--purple);
-      opacity: 0.35;
+      opacity: 0.45;
       letter-spacing: 3px;
-      z-index: 0;
+      z-index: 1;
       text-shadow: 0 0 20px rgba(210, 64, 255, 0.5);
     }
-    .lock-icon svg {
+    .lock-icon .lock-svg {
       position: relative;
-      z-index: 1;
-      width: 72px;
-      height: 72px;
+      z-index: 2;
+      width: 56px;
+      height: 56px;
       fill: none;
       stroke: var(--purple);
       stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
-      opacity: 0.6;
+      opacity: 0.7;
+      margin-bottom: 14px;
     }
     .app-card--locked h2 {
       color: var(--purple);
@@ -241,8 +261,11 @@
       .app-grid { grid-template-columns: 1fr; }
       .wrapper { padding: 60px 16px 40px; gap: 40px; }
       .app-card { padding: 32px 20px; min-height: auto; }
-      .app-icon, .lock-icon { width: 96px; height: 96px; border-radius: 22px; }
-      .lock-icon svg { width: 36px; height: 36px; }
+      .app-icon { width: 96px; height: 96px; border-radius: 22px; }
+      .lock-icon { width: 140px; height: 130px; border-radius: 26px; }
+      .lock-icon .lock-svg { width: 40px; height: 40px; }
+      .car-silhouette { width: 105px; }
+      .lock-label { font-size: 24px; }
     }
   </style>
 </head>
@@ -276,17 +299,15 @@
             <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             App Store
           </a>
-          <a href="https://play.google.com/store/apps/details?id=com.sliderush.slide_rush_flutter&hl=en_US" class="store-badge" aria-label="Get it on Google Play">
-            <svg viewBox="0 0 24 24"><path d="M3.61 1.814L13.793 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .61-.92zm10.893 9.476l2.56-2.56 3.48 2.02c.63.36.63.96 0 1.32l-3.48 2.02-2.56-2.56-.01-.12.01-.12zM5.27.405L14.5 5.75l-2.56 2.56L5.27.405zm0 23.19l6.67-7.905 2.56 2.56L5.27 23.595z"/></svg>
-            Google Play
-          </a>
+          <span class="store-badge store-badge--disabled">Unavailable on Android</span>
         </div>
       </section>
 
       <!-- Coming Soon -->
       <section class="app-card app-card--locked">
         <div class="lock-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <svg class="car-silhouette" viewBox="0 0 512 220"><path d="M 48,180 C 30,180 16,168 16,152 L 16,132 C 16,120 24,110 36,106 L 80,92 L 140,52 C 156,40 176,34 196,34 L 340,34 C 364,34 386,44 402,62 L 448,112 L 476,118 C 496,122 512,140 512,160 L 512,164 C 512,176 502,186 490,186 L 440,186 C 436,206 418,220 396,220 C 374,220 356,206 352,186 L 168,186 C 164,206 146,220 124,220 C 102,220 84,206 80,186 L 48,180 Z M 124,196 C 134,196 142,188 142,178 C 142,168 134,160 124,160 C 114,160 106,168 106,178 C 106,188 114,196 124,196 Z M 396,196 C 406,196 414,188 414,178 C 414,168 406,160 396,160 C 386,160 378,168 378,178 C 378,188 386,196 396,196 Z"/></svg>
+          <svg class="lock-svg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <span class="lock-label">Ai</span>
         </div>
         <h2>SOMETHING BIG</h2>
